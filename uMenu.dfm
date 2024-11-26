@@ -12,6 +12,7 @@ object frmMenu: TfrmMenu
   Font.Style = []
   Menu = mmPrincipal
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object mmPrincipal: TMainMenu

@@ -26,6 +26,10 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ForceUppercase(Sender: TObject; var Key: Char);
+    procedure btnApagarClick(Sender: TObject);
+    procedure dbgrdCidadesTitleClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -183,6 +187,30 @@ procedure TfrmCidades.FormShow(Sender: TObject);
 begin
    if (not dmConexao.cdsCidades.Active) then
       dmConexao.cdsCidades.Open;
+end;
+
+procedure TfrmCidades.FormCreate(Sender: TObject);
+var
+  I: Integer;
+begin
+   for I := 0 to ComponentCount - 1 do
+      if (Components[I] is TEdit) then
+         TEdit(Components[I]).OnKeyPress := ForceUppercase;
+end;
+
+procedure TfrmCidades.ForceUppercase(Sender: TObject; var Key: Char);
+begin
+   Key := UpCase(Key);
+end;
+
+procedure TfrmCidades.btnApagarClick(Sender: TObject);
+begin
+//   if dmConexao.dsCidades
+end;
+
+procedure TfrmCidades.dbgrdCidadesTitleClick(Column: TColumn);
+begin
+   dmConexao.cdsCidades.IndexFieldNames := Column.FieldName;
 end;
 
 end.
